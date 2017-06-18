@@ -10,6 +10,7 @@ using Droid_Database;
 
 namespace Droid_litterature
 {
+    [Serializable]
     public class Parse
     {
         #region Attribute
@@ -63,7 +64,7 @@ namespace Droid_litterature
                     }
                     catch (IndexOutOfRangeException exp3601)
                     {
-                        Log.write("[ DEB : 3601 ] Pff out of the range, problem while parsing a simple word sorry :/\n" + exp3601.Message);
+                        Log.Write("[ DEB : 3601 ] Pff out of the range, problem while parsing a simple word sorry :/\n" + exp3601.Message);
                     }
                 }
             }
@@ -769,7 +770,7 @@ namespace Droid_litterature
                 }
                 catch (Exception exp3600)
                 {
-                    Log.write("[ ERR : 3600 ] error while parsing gramar.\n" + exp3600.Message);
+                    Log.Write("[ ERR : 3600 ] error while parsing gramar.\n" + exp3600.Message);
                 }
             }
             if (!_flagFind)

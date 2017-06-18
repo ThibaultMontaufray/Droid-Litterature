@@ -40,15 +40,18 @@ namespace Droid_litterature
             string dump;
             Dico dico = null;
             XmlSerializer xsSubmit = new XmlSerializer(typeof(Dico));
-            using (StreamReader sr = new StreamReader(DICOXMLPATH))
-            {
-                dump = sr.ReadToEnd();
-            }
-            using (StringReader srr = new StringReader(dump))
-            using (XmlReader reader = XmlReader.Create(srr))
-            {
-                var obj = xsSubmit.Deserialize(reader);
-                dico = obj as Dico;
+            if (File.Exists(DICOXMLPATH))
+            { 
+                using (StreamReader sr = new StreamReader(DICOXMLPATH))
+                {
+                    dump = sr.ReadToEnd();
+                }
+                using (StringReader srr = new StringReader(dump))
+                using (XmlReader reader = XmlReader.Create(srr))
+                {
+                    var obj = xsSubmit.Deserialize(reader);
+                    dico = obj as Dico;
+                }
             }
             return dico;
         }

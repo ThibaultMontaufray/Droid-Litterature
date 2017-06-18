@@ -44,6 +44,9 @@ namespace Droid_litterature
         public const int ACTQUEL = 11;
         public const int ACTACTION = 12;
         public const int ACTKEYWORD = 13;
+        public const int ACTKEYREGISTER = 14;
+        public const int ACTABSTRACTION = 15;
+        public const int ACTPERSON = 16;
         #endregion
 
         #region Attribute

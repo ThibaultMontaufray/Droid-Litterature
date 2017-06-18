@@ -2,12 +2,12 @@
 <package >
   <metadata>
     <id>Droid_litterature</id>
-    <version>1.0.6</version>
+    <version>1.0.8</version>
     <title>Servodroid.Litterature</title>
     <authors>Thibault MONTAUFRAY</authors>
     <owners>Servodroid</owners>
     <licenseUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/License</licenseUrl>
-    <projectUrl>https://github.com/ThibaultMontaufray/Manager-Litterature</projectUrl>
+    <projectUrl>https://github.com/ThibaultMontaufray/Droid-Litterature</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/ManagersDevComponents/servodroidIconColor.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Parsing all sentenses with vocabulary and times. XML file with almost french words. You can add your own database to have your words.</description>
