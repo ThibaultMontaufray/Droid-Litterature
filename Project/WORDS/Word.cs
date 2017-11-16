@@ -298,6 +298,11 @@ namespace Droid_litterature
         #endregion
 
         #region Methods public
+        public static string ToCommonName(string word)
+        {
+            if (string.IsNullOrEmpty(word) || word.Length < 2) return word;
+            return (word.ToUpper().Substring(0, 1) + word.ToLower().Substring(1, word.Length - 1));
+        }
         public bool IsEqualsTo(Word w)
         {
             if (!w.Text.Equals(this.Text)) return false;
