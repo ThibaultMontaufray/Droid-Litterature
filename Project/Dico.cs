@@ -1,6 +1,7 @@
-﻿using Droid_Database;
+﻿using Droid.Database;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,10 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Droid_litterature
+namespace Droid.litterature
 {
     /// <summary>
-    /// All words / grammar / syllabe parsing for a langage
+    /// All words / grammar / syllabe parsing for a language
     /// </summary>
     public class Dico
     {
@@ -73,7 +74,7 @@ namespace Droid_litterature
             }
         }
         /// <summary>
-        /// All list of syllabe for this langage
+        /// All list of syllabe for this language
         /// </summary>
         public List<Syllabe> ListSyllabe
         {
@@ -296,12 +297,13 @@ namespace Droid_litterature
 
         #region Methods public
         /// <summary>
-        /// Load the dictionnary for the current langage
+        /// Load the dictionnary for the current language
         /// </summary>
         /// <returns>error code after dico lading : 0 -> ok</returns>
         private void LoadDico()
         {
-            _dbConnectionAvailable = MySqlAdapter.IsConnectionPossible();
+            Console.WriteLine("Start loading dico");
+            _dbConnectionAvailable = DBAdapter.IsConnected;
             if (_dbConnectionAvailable)
             { 
                 conjugaison = new Conjugaison(this);
@@ -324,6 +326,7 @@ namespace Droid_litterature
 
                 Dumper.DumpDico(this);
             }
+            Console.WriteLine("Dico loaded.");
         }
         /// <summary>
         /// Parse a specific ord and decompose syllabes
@@ -532,7 +535,7 @@ namespace Droid_litterature
             //return BuildSyllabeCompleteList();
             foreach (Syllabe item in ls)
             {
-                MySqlAdapter.ExecuteQuery("insert into s_unknownsyllabe (valeur) values ('" + item.Text + "')");   
+                DBAdapter.ExecuteQuery(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("insert into {0}.s_unknownsyllabe (valeur) values ('{1}')", ConfigurationManager.AppSettings["DB_NAME"].ToString(), item.Text));   
             }
             return null;
         }

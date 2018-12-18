@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Droid_litterature
+namespace Droid.litterature
 {
     public static class Dumper
     {

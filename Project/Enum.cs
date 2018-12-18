@@ -1,10 +1,10 @@
 ﻿
-namespace Droid_litterature
+namespace Droid.litterature
 {
     public enum LANGAGE
     {
-        NONE,
-        FR
+        FR,
+        NONE
     }
     public enum PONCTUATION
     {

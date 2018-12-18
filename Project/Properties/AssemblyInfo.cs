@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("Droid_litterature")]
+[assembly: AssemblyTitle("Droid.litterature")]
 [assembly: AssemblyDescription("Parsing sentenses and identify all words roles (verb, adverb, adjectives, names, ...) and the grammar (times, conjugation, ...)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("servOdroid Inc.")]
-[assembly: AssemblyProduct("Droid_litterature")]
+[assembly: AssemblyProduct("Droid.litterature")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

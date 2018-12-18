@@ -1,12 +1,14 @@
-﻿namespace Droid_litterature
+﻿namespace Droid.litterature
 {
-    using Droid_Database;
+    using Droid.Database;
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
+    using System.Data;
     using System.Linq;
 
     /// <summary>
-    /// Interface for Tobi Assistant application : take care, some french word here to allow Tobi to speak with natural langage.
+    /// Interface for Tobi Assistant application : take care, some french word here to allow Tobi to speak with natural language.
     /// </summary>            
     public class Interface_litterature
     {
@@ -25,10 +27,17 @@
         }
         #endregion
 
-        #region Init
-        public static void Init(LANGAGE language)
+        #region Constructor
+        private Interface_litterature()
         {
-            if (!MySqlAdapter.IsConnectionPossible())
+            _dico = new Dico();
+        }
+        #endregion  
+
+        #region Init
+        public static void Init(LANGAGE language, DataBasesType dbType)
+        {
+            if (!DBAdapter.IsConnected)
             {
                 _dico = Dumper.LoadDump();
             }
@@ -37,15 +46,15 @@
                 _dico = new Dico(language, "France");
             }
         }
-        public static void Init(string Language)
+        public static void Init(string language, DataBasesType dbType)
         {
-            if (!MySqlAdapter.IsConnectionPossible())
+            if (!DBAdapter.IsConnected)
             {
                 _dico = Dumper.LoadDump();
             }
             else
             {
-                LANGAGE lang = (LANGAGE)Enum.Parse(typeof(LANGAGE), Language);
+                LANGAGE lang = (LANGAGE)Enum.Parse(typeof(LANGAGE), language);
                 _dico = new Dico(lang, "France");
             }
         }
@@ -86,36 +95,40 @@
         {
             try
             {
-                List<string[]> dbResult = MySqlAdapter.ExecuteReader(string.Format("select * from t_mot where valeur = '{0}'", text));
-                Word word = DefinitionLoader.LoadClassicWord(dbResult[0]);
+                // datatable check
+                DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where valeur = '{1}'", ConfigurationManager.AppSettings["DB_NAME"].ToString(), text));
+
+                string[] row = dbResult.Rows[0].ItemArray.Select(i => i.ToString()).ToArray();
+                Word word = DefinitionLoader.LoadClassicWord(dbResult.Rows[0]);
+
 
                 foreach (string role in roles)
                 {
                     switch (role.ToLower())
                     {
                         case "adjectif":
-                            _dico.ListAdjectives.Add(DefinitionLoader.ParseAdjective(word, dbResult[0], _dico));
+                            _dico.ListAdjectives.Add(DefinitionLoader.ParseAdjective(word, row, _dico));
                             break;
                         case "adverbe":
-                            _dico.ListAdverbs.Add(DefinitionLoader.ParseAdverb(word, dbResult[0], _dico));
+                            _dico.ListAdverbs.Add(DefinitionLoader.ParseAdverb(word, row, _dico));
                             break;
                         case "conjonction":
-                            _dico.ListConjonctions.Add(DefinitionLoader.ParseConjonction(word, dbResult[0], _dico));
+                            _dico.ListConjonctions.Add(DefinitionLoader.ParseConjonction(word, row, _dico));
                             break;
                         case "determinant":
-                            _dico.ListDeterminant.Add(DefinitionLoader.ParseDeterminant(word, dbResult[0], _dico));
+                            _dico.ListDeterminant.Add(DefinitionLoader.ParseDeterminant(word, row, _dico));
                             break;
                         case "nom":
-                            _dico.ListNomCommuns.Add(DefinitionLoader.ParseNomCommun(word, dbResult[0], _dico));
+                            _dico.ListNomCommuns.Add(DefinitionLoader.ParseNomCommun(word, row, _dico));
                             break;
                         case "preposition":
-                            _dico.ListPreposition.Add(DefinitionLoader.ParsePreposition(word, dbResult[0], _dico));
+                            _dico.ListPreposition.Add(DefinitionLoader.ParsePreposition(word, row, _dico));
                             break;
                         case "pronom":
-                            _dico.ListPronoms.Add(DefinitionLoader.ParsePronom(word, dbResult[0], _dico));
+                            _dico.ListPronoms.Add(DefinitionLoader.ParsePronom(word, row, _dico));
                             break;
                         case "verbe":
-                            _dico.ListVerbs.Add(DefinitionLoader.ParseVerb(word, dbResult[0], _dico));
+                            _dico.ListVerbs.Add(DefinitionLoader.ParseVerb(word, row, _dico));
                             break;
                     }
                 }
@@ -124,35 +137,6 @@
             {
                 Console.WriteLine("An error occured while parsing word " + text + " ERROR : " + exp.Message);
             }
-        }
-
-        public static string ACTION_130_apprendre_mot(string texte, string genre = "", string nombre = "", string langue = "")
-        {
-            return string.Empty;
-        }
-        public static string ACTION_131_definir_mot(string texte)
-        {
-            return string.Empty;
-        }
-        public static string ACTION_132_comparer_mot(string mot_1, string mot_2, string qualificatif)
-        {
-            return mot_1;
-        }
-        public static string ACTION_133_donner_oppose(string mot)
-        {
-            return string.Empty;
-        }
-        public static string ACTION_134_donner_contraire(string mot)
-        {
-            return string.Empty;
-        }
-        public static string ACTION_135_saluer()
-        {
-            return "Bonjour";
-        }
-        public static string ACTION_136_prendre_conge()
-        {
-            return "Au revoir";
         }
         #endregion
 
