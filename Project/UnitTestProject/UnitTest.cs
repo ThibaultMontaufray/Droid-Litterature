@@ -1,5 +1,5 @@
 ﻿using System;
-using Droid_litterature;
+using Droid.Litterature;
 using System.Linq;
 using NUnit.Framework;
 
@@ -19,7 +19,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
 
                 Assert.IsTrue(sent.Text.Equals(text));
             }
@@ -34,7 +34,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.Words.Count == 4);
             }
             catch (Exception exp)
@@ -48,7 +48,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.Understood);
             }
             catch (Exception exp)
@@ -62,7 +62,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.Subject.Count(s => s.Text.Equals("je")) > 0);
             }
             catch (Exception exp)
@@ -76,7 +76,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.Verbs.Count(s => s.Text.Equals("etre")) > 0);
             }
             catch (Exception exp)
@@ -90,7 +90,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.GroupCOD.Count(g => g.Text.Equals("une mouette")) > 0);
             }
             catch (Exception exp)
@@ -104,7 +104,7 @@ namespace UnitTestProject
             try
             {
                 string text = "je suis une mouette à bec noir";
-                Sentense sent = new Sentense(text, "id_123456789");
+                Sentense sent = new Sentense(text);
                 Assert.IsTrue(sent.GroupCOI.Count(g => g.Text.Equals("à bec noir")) > 0);
             }
             catch (Exception exp)

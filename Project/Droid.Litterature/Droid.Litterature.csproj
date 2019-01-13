@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <ProjectGuid>{9A7682A2-CA86-4A3F-A785-9D596D750D33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Droid.Litterature</RootNamespace>
+    <AssemblyName>Droid.Litterature</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <Version>1.0.9</Version>
+    <Authors>Thibault MONTAUFRAY</Authors>
+    <Company>ServodroidThibault MONTAUFRAY</Company>
+    <Description>Parsing all sentenses with vocabulary and times. XML file with almost french words. You can add your own database to have your words.</Description>
+    <Copyright>Copyright 2015 - 2019</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/License</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ThibaultMontaufray/Droid-Litterature</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ThibaultMontaufray/Droid-Litterature</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageIconUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/ManagersDevComponents/servodroidIconColor.png</PackageIconUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Droid.Database" Version="1.0.13" />
+    <PackageReference Include="Tools.Utilities" Version="1.0.23" />
+  </ItemGroup>
+</Project>
