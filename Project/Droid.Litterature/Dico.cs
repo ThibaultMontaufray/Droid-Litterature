@@ -535,7 +535,7 @@ namespace Droid.Litterature
             //return BuildSyllabeCompleteList();
             foreach (Syllabe item in ls)
             {
-                DBAdapter.ExecuteQuery(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("insert into {0}.s_unknownsyllabe (valeur) values ('{1}')", ConfigurationManager.AppSettings["DB_NAME"].ToString(), item.Text));   
+                DBAdapter.ExecuteQuery(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("insert into {0}.s_unknownsyllabe (valeur) values ('{1}')", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString(), item.Text));   
             }
             return null;
         }

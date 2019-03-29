@@ -1052,7 +1052,7 @@ namespace Droid.Litterature
                 if (w is Verb && !string.IsNullOrEmpty((w as Verb).Infinitive))
                 {
                     // datatable change check columns.row
-                    DataTable dbDetails = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select définition from {0}.t_mot where valeur = '{1}';", ConfigurationManager.AppSettings["DB_NAME"].ToString(), (w as Verb).Infinitive));
+                    DataTable dbDetails = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select définition from {0}.t_mot where valeur = '{1}';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString(), (w as Verb).Infinitive));
                     if (dbDetails.Rows.Count > 0 && dbDetails.Rows[0].ItemArray.Length > 0)
                     {
                         w.Definition = dbDetails.Rows[0].ItemArray[0].ToString();
