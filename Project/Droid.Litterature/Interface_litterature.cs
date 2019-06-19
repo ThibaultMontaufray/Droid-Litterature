@@ -96,7 +96,7 @@
             try
             {
                 // datatable check
-                DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where valeur = '{1}'", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString(), text));
+                DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where valeur = '{1}'", Parameters.Config["DB_SCHEMA"].ToString(), text));
 
                 string[] row = dbResult.Rows[0].ItemArray.Select(i => i.ToString()).ToArray();
                 Word word = DefinitionLoader.LoadClassicWord(dbResult.Rows[0]);

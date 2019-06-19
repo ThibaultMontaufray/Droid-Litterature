@@ -72,7 +72,7 @@ namespace Droid.Litterature
         #region Methods public
         public static void Inject(string sound, string text)
         {
-            DBAdapter.ExecuteQuery(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("update table t_syllabe set valeur = '{0}' sound = '{1}'", text, sound));
+            DBAdapter.ExecuteQuery(Parameters.Config["DB_NAME"].ToString(), string.Format("update table t_syllabe set valeur = '{0}' sound = '{1}'", text, sound));
 
         }
         #endregion

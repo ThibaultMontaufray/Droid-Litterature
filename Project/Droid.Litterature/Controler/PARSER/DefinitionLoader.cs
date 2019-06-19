@@ -76,7 +76,7 @@ namespace Droid.Litterature
         public static void LoadPronom(Dico dico)
         {
             Pronom pronom = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[pronom]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[pronom]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -90,7 +90,7 @@ namespace Droid.Litterature
         public static void LoadAdjective(Dico dico)
         {
             Adjective adjective = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[adjectif]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[adjectif]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -104,7 +104,7 @@ namespace Droid.Litterature
         public static void LoadAdverb(Dico dico)
         {
             Adverb adverb = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[adverbe]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[adverbe]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -118,7 +118,7 @@ namespace Droid.Litterature
         public static void LoadConjonction(Dico dico)
         {
             Conjonction conjonction = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[conjonction]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[conjonction]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -132,7 +132,7 @@ namespace Droid.Litterature
         public static void LoadVerb(Dico dico)
         {
             Verb verb = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[verbe]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[verbe]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -153,7 +153,7 @@ namespace Droid.Litterature
         public static void LoadNomCommuns(Dico dico)
         {
             NomCommun nomcommun = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[nom]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[nom]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -167,7 +167,7 @@ namespace Droid.Litterature
         public static void LoadNomPropres(Dico dico)
         {
             NomPropre nompropre = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select nom, prénom, surnom, genre from {0}.t_connaissance;", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select nom, prénom, surnom, genre from {0}.t_connaissance;", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -180,7 +180,7 @@ namespace Droid.Litterature
                     dico.ListNomPropres.Add(nompropre);
                 }
             }
-            dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select valeur, genre from {0}.t_prenom;", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select valeur, genre from {0}.t_prenom;", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -211,7 +211,7 @@ namespace Droid.Litterature
         public static void LoadDeterminants(Dico dico)
         {
             Determinant determinant = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[determinant]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[determinant]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -225,7 +225,7 @@ namespace Droid.Litterature
         public static void LoadPreposition(Dico dico)
         {
             Preposition preposition = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[preposition]%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%[preposition]%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -239,7 +239,7 @@ namespace Droid.Litterature
         public static void LoadSyllabe(Dico dico)
         {
             Syllabe syllabe = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_syllabe;", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_syllabe;", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -256,7 +256,7 @@ namespace Droid.Litterature
         public static void LoadChiffre(Dico dico)
         {
             Chiffre chf = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%chiffre%';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_mot where role like '%chiffre%';", Parameters.Config["DB_SCHEMA"].ToString()));
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -273,8 +273,8 @@ namespace Droid.Litterature
         public static void LoadConjugaison(Dico dico)
         {
             Time time = null;
-            DataTable dbResult = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select * from {0}.t_conjugaison;", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
-            DataTable dbColum = DBAdapter.Desc(ConfigurationManager.AppSettings["DB_NAME"].ToString(), "t_conjugaison");
+            DataTable dbResult = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select * from {0}.t_conjugaison;", Parameters.Config["DB_SCHEMA"].ToString()));
+            DataTable dbColum = DBAdapter.Desc(Parameters.Config["DB_NAME"].ToString(), "t_conjugaison");
             if (dbResult.Rows.Count > 0)
             {
                 foreach (DataRow dbItem in dbResult.Rows)
@@ -509,7 +509,7 @@ namespace Droid.Litterature
                         if (!string.IsNullOrEmpty(t.Infinitif))
                         {
                             // Datatable change, check column/row order
-                            DataTable dbDetails = DBAdapter.ExecuteReader(ConfigurationManager.AppSettings["DB_NAME"].ToString(), string.Format("select définition from {0}.t_mot where valeur = '" + t.Infinitif + "';", ConfigurationManager.AppSettings["DB_SCHEMA"].ToString()));
+                            DataTable dbDetails = DBAdapter.ExecuteReader(Parameters.Config["DB_NAME"].ToString(), string.Format("select définition from {0}.t_mot where valeur = '" + t.Infinitif + "';", Parameters.Config["DB_SCHEMA"].ToString()));
                             if (dbDetails.Rows.Count > 0 && dbDetails.Columns.Count > 0 && !string.IsNullOrEmpty(dbDetails.Rows[0].ItemArray[0].ToString()))
                             {
                                 verb.Definition = dbDetails.Rows[0].ItemArray[0].ToString();
