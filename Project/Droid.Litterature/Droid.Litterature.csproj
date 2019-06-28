@@ -7,7 +7,7 @@
     <RootNamespace>Droid.Litterature</RootNamespace>
     <AssemblyName>Droid.Litterature</AssemblyName>
     <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
-    <Version>1.0.13</Version>
+    <Version>1.0.14</Version>
     <Authors>Thibault MONTAUFRAY</Authors>
     <Company>ServodroidThibault MONTAUFRAY</Company>
     <Description>Parsing all sentenses with vocabulary and times. XML file with almost french words. You can add your own database to have your words.</Description>
@@ -19,8 +19,8 @@
     <PackageIconUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/ManagersDevComponents/servodroidIconColor.png</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.13.0</AssemblyVersion>
-    <FileVersion>1.0.13.0</FileVersion>
+    <AssemblyVersion>1.0.14.0</AssemblyVersion>
+    <FileVersion>1.0.14.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

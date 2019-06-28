@@ -305,9 +305,13 @@ namespace Droid.Litterature
             Console.WriteLine("Start loading dico");
             _dbConnectionAvailable = DBAdapter.IsConnected;
             if (_dbConnectionAvailable)
-            { 
+            {
+                Console.WriteLine("Database connection available.");
+
                 conjugaison = new Conjugaison(this);
+                Console.WriteLine("Conjugaison created.");
                 accord = new Accord();
+                Console.WriteLine("Accord created.");
 
                 DefinitionLoader.LoadSyllabe(this);
                 DefinitionLoader.LoadConjugaison(this);
