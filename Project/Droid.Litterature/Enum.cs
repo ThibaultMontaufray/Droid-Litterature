@@ -4,6 +4,8 @@ namespace Droid.Litterature
     public enum LANGAGE
     {
         FR,
+        EN,
+        TN,
         NONE
     }
     public enum PONCTUATION
