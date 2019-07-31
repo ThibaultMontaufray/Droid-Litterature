@@ -1,8 +1,10 @@
 ﻿namespace Droid.Litterature
 {
     using Droid.Database;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Configuration;
     using System.Data;
     using System.Linq;
@@ -14,6 +16,7 @@
     {
         #region Attribute
         private static Dico _dico;
+        private static IConfiguration _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
         #endregion
 
         #region Properties
@@ -61,6 +64,36 @@
         #endregion
 
         #region Methods public
+
+        #region Action
+        [Description("french[definir.mot(mot)];english[definition.word(word)]")]
+        public static Dictionary<string, object[]> ACTION_130_definition_word(string word)
+        {
+            Dictionary<string, object[]> objDump = new Dictionary<string, object[]>();
+            if (string.IsNullOrEmpty(word)) { return objDump; }
+
+            DataTable dtDef = Droid.Database.DBAdapter.ExecuteReader(_config["DB_SCHEMA"], string.Format("select définition from ppartobid01.t_mot where valeur = '{0}';", word.ToLower()));
+            try
+            {
+                string[] definition = dtDef.Rows[0][0].ToString().Split('|');
+                foreach (var item in definition)
+                {
+                    DataTable dt = Droid.Database.DBAdapter.ExecuteReader(_config["DB_SCHEMA"], string.Format("select * from ppartobid01.t_{0} where valeur = '{1}';", item.ToLower(), word.ToLower()));
+                    if (dt.Rows.Count > 0)
+                    {
+                        objDump[item.ToLower()] = dt.Rows[0].ItemArray;
+                    }
+                }
+                return objDump;
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+                return null;
+            }
+        }
+        #endregion
+
         public static void SetSynonyme(string word1, string word2)
         {
             if (_dico != null && !string.IsNullOrEmpty(word1) && !string.IsNullOrEmpty(word2))

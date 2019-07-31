@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace UnitTestProject
 {
     [TestFixture]
-    public class UnitTest1
+    public class UTSentenses
     {
         [Test]
         public void TestUTRuns()
